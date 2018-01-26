@@ -1,0 +1,67 @@
+﻿
+@model IEnumerable<AppointmentBook.Models.Services>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<button id="AddButton" >
+    
+    @Html.ActionLink("add services", "AddServices")
+
+  
+
+</button>
+
+<div class="container">
+    <h2>Services List </h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Service Id</th>
+                <th>Service Name</th>
+                <th>Service Description</th>
+                <th> Edit</th>
+                <th> Delete</th>
+                <th>Please Checkbox for Edit or Delete for Top Menu</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ServiceId
+                    </td>
+
+                    <td>
+                        @item.ServiceName
+                    </td>
+
+                    <td>
+                        @item.ServiceDescription
+                    </td>
+                    <td>
+                        <button id="btnedit">  @Html.ActionLink("Edit services", "EditServices", new { Id = @item.ServiceId })</button>
+                    </td>
+                        
+                    <td>
+
+                        <button id="btndelete">   @Html.ActionLink("Delete services", "DeleteServices",new{Id = @item.ServiceId})</button>
+                    </td>
+
+                    <td>
+                        <input  type="checkbox" name="chkdelete" onclick="getSelect(@item.ServiceId)" />
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+        </>
+</div>
+
+

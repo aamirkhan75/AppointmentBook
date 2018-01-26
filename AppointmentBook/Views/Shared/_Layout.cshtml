@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+
+    <script>
+
+        function getSelect(seviceid)
+        {
+
+            alert(seviceid);
+        }
+
+
+        $(document).ready(function ()
+
+        {
+
+            $(".ds").hide();
+
+            $("#AddButton").click(function () {
+
+              
+                $.ajax({
+
+                    type: "get",
+                    url: 'Appointment/AddServices',
+                    success: function (data) {
+
+                        
+
+                    }
+
+                });
+            }
+
+            );
+
+        });
+    </script>
+
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("HairOdyssey2000", "Index", "Appointment", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+
+
+                    <li class="active">@Html.ActionLink("Add Services", "AddServices", "Appointment", new { area = "" }, new { @class = "button" })</li>
+                    <li>@Html.ActionLink("Edit Services", "EditServices", "Appointment", new { area = "" }, new { @class = "ds"  })</li>
+                    <li>@Html.ActionLink("List Services", "Index", "Appointment", new { area = "" }, new { @class = "button" })</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
